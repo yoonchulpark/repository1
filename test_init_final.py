@@ -678,13 +678,16 @@ async def dbSave():
 						information1 += ' - ' + bossData[i][0] + '(' + bossData[i][1] + '.' + bossData[i][5] + ') : ' + bossTimeString[i] + ' @ ' + bossDateString[i] + ' (멍 ' + str(bossMungCnt[i]) + '회)' + ' * ' + bossData[i][6] + '\n'
 						
 	try :
+		await client.get_channel(channel).send( '< 데이터를 저장합니다! >', tts=False)
 		contents = repo.get_contents("my_bot.db")
 		repo.update_file(contents.path, "bossDB", information1, contents.sha)
+		await client.get_channel(channel).send( '< 데이터 저장이 완료 되었습니다.! >', tts=False)
 	except GithubException as e :
 		print ('save error!!')
 		print(e.args[1]['message']) # output: This repository is empty.
 		errortime = datetime.datetime.now()
 		print (errortime)
+		await client.get_channel(channel).send( '< 데이터 저장에 실패하였습니다! >', tts=False)
 		pass
 
 #my_bot.db 불러오기
