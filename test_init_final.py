@@ -456,6 +456,8 @@ async def task():
 						if bossMungFlag[i] == True:
 							bossTimeString[i] = tmp_bossTime[i].strftime('%H:%M:%S')
 							bossDateString[i] = tmp_bossTime[i].strftime('%Y-%m-%d')
+							
+				await client.get_channel(channel).send('< 보탐봇 재시작 합니다. >', tts=False)
 				await dbSave()
 				await FixedBossDateSave()
 				await kill_list_Save()
