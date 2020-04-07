@@ -643,7 +643,7 @@ async def PlaySound(voiceclient, filename):
 	source.cleanup()
 
 #my_bot.db 저장하기
-async def dbSave():
+async def dbSave(messageSend):
 	global bossData
 	global bossNum
 	global bossTime
@@ -680,10 +680,11 @@ async def dbSave():
 						information1 += ' - ' + bossData[i][0] + '(' + bossData[i][1] + '.' + bossData[i][5] + ') : ' + bossTimeString[i] + ' @ ' + bossDateString[i] + ' (멍 ' + str(bossMungCnt[i]) + '회)' + ' * ' + bossData[i][6] + '\n'
 						
 	try :
-		await client.get_channel(channel).send( '< 데이터를 저장합니다! >', tts=False)
+		#await client.get_channel(channel).send( '< 데이터를 저장합니다! >', tts=False)
 		contents = repo.get_contents("my_bot.db")
 		repo.update_file(contents.path, "bossDB", information1, contents.sha)
-		await client.get_channel(channel).send( '< 데이터 저장이 완료 되었습니다.! >', tts=False)
+		if(messageSend == true):
+			await client.get_channel(channel).send( '< 데이터 저장이 완료 되었습니다! >', tts=False)
 	except GithubException as e :
 		print ('save error!!')
 		print(e.args[1]['message']) # output: This repository is empty.
@@ -1310,7 +1311,7 @@ while True:
 							description= '```다음 ' + bossData[i][0] + ' ' + bossTimeString[i] + '입니다.```',
 							color=0xff0000
 							)
-					await dbSave()
+					await dbSave(true)
 					await client.get_channel(channel).send(embed=embed, tts=False)
 
 				################ 보스 멍 처리 ################ 
@@ -1364,7 +1365,7 @@ while True:
 								description= '```다음 ' + bossData[i][0] + ' ' + bossTimeString[i] + '입니다.```',
 								color=0xff0000
 								)
-						await dbSave()
+						await dbSave(true)
 						await client.get_channel(channel).send(embed=embed, tts=False)
 					else:
 						if tmp_bossTime[i] < tmp_now :
@@ -1385,7 +1386,7 @@ while True:
 									color=0xff0000
 									)
 							await client.get_channel(channel).send(embed=embed, tts=False)
-							await dbSave()
+							await dbSave(true)
 						else:
 							await client.get_channel(channel).send('```' + bossData[i][0] + '탐이 아직 안됐습니다. 다음 ' + bossData[i][0] + '탐 [' + tmp_bossTimeString[i] + '] 입니다```', tts=False)
 
@@ -1449,7 +1450,7 @@ while True:
 					bossMungFlag[i] = (False)
 					bossMungCnt[i] = 0
 					await client.get_channel(channel).send('<' + bossData[i][0] + ' 삭제완료>', tts=False)
-					await dbSave()
+					await dbSave(true)
 					print ('<' + bossData[i][0] + ' 삭제완료>')
 				
 				################ 보스별 메모 ################ 
@@ -1625,7 +1626,7 @@ while True:
 							bossDateString[i] = tmp_bossTime[i].strftime('%Y-%m-%d')
 
 				await client.get_channel(channel).send('< 보탐봇 재시작 합니다. >', tts=False)
-				await dbSave()
+				await dbSave(true)
 				await kill_list_Save()
 				#await FixedBossDateSave()
 				#await client.get_channel(channel).send('<보탐봇 재시작 중... 갑자기 인사해도 놀라지마세요!>', tts=False)
@@ -1716,7 +1717,7 @@ while True:
 				
 				init()
 
-				await dbSave()
+				await dbSave(true)
 
 				await client.get_channel(channel).send('<초기화 완료>', tts=False)
 				print ("<초기화 완료>")
@@ -1767,9 +1768,9 @@ while True:
 					tmp_bossTimeString[i] = bossTimeString[i] = nextTime.strftime('%H:%M:%S')
 					tmp_bossDateString[i] = bossDateString[i] = nextTime.strftime('%Y-%m-%d')
 
-				await dbSave()
+				await dbSave(true)
 				await dbLoad()
-				await dbSave()
+				#await dbSave()
 				
 				await client.get_channel(channel).send('<보스 일괄 입력 완료>', tts=False)
 				print ("<보스 일괄 입력 완료>")
@@ -2041,7 +2042,7 @@ while True:
 								)
 						await client.get_channel(channel).send( embed=embed, tts=False)
 
-				await dbSave()
+				await dbSave(true)
 				await kill_list_Save()
 
 			################ 보스타임 출력(고정보스포함) ################ 
@@ -2212,7 +2213,7 @@ while True:
 							)
 					await client.get_channel(channel).send( embed=embed, tts=False)
 
-				await dbSave()
+				await dbSave(false)
 				await kill_list_Save()
 
 			################ 현재시간 확인 ################ 
@@ -2241,7 +2242,7 @@ while True:
 						bossFlag[i] = False
 						bossFlag0[i] = False
 						bossMungFlag[i] = False					
-				await dbSave()
+				await dbSave(true)
 				print("명치!")
 				await voice_client1.disconnect()
 				#client.clear()
