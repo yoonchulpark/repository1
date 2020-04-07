@@ -1310,6 +1310,7 @@ while True:
 							description= '```다음 ' + bossData[i][0] + ' ' + bossTimeString[i] + '입니다.```',
 							color=0xff0000
 							)
+					await dbSave()
 					await client.get_channel(channel).send(embed=embed, tts=False)
 
 				################ 보스 멍 처리 ################ 
@@ -1363,6 +1364,7 @@ while True:
 								description= '```다음 ' + bossData[i][0] + ' ' + bossTimeString[i] + '입니다.```',
 								color=0xff0000
 								)
+						await dbSave()
 						await client.get_channel(channel).send(embed=embed, tts=False)
 					else:
 						if tmp_bossTime[i] < tmp_now :
@@ -1383,6 +1385,7 @@ while True:
 									color=0xff0000
 									)
 							await client.get_channel(channel).send(embed=embed, tts=False)
+							await dbSave()
 						else:
 							await client.get_channel(channel).send('```' + bossData[i][0] + '탐이 아직 안됐습니다. 다음 ' + bossData[i][0] + '탐 [' + tmp_bossTimeString[i] + '] 입니다```', tts=False)
 
@@ -1620,6 +1623,8 @@ while True:
 						if bossMungFlag[i] == True:
 							bossTimeString[i] = tmp_bossTime[i].strftime('%H:%M:%S')
 							bossDateString[i] = tmp_bossTime[i].strftime('%Y-%m-%d')
+
+				await client.get_channel(channel).send('< 보탐봇 재시작 합니다. >', tts=False)
 				await dbSave()
 				await kill_list_Save()
 				#await FixedBossDateSave()
