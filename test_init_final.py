@@ -1609,11 +1609,13 @@ while True:
 			################ 음성파일 생성 후 재생 ################ 			
 				
 			if message.content.startswith(command[15]) or message.content.startswith('!ㅍ') or message.content.startswith('!V'):
-				tmp_sayMessage = message.content
+				await client.get_channel(channel).send('< 음성 재생 기능은 잠시 중단 되었습니다. >', tts=False)
+				
+				'''tmp_sayMessage = message.content
 				sayMessage = tmp_sayMessage[len(command[15])+1:]
 				await MakeSound(message.author.display_name +'님이.' + sayMessage, './sound/say')
 				await client.get_channel(channel).send("```< " + msg.author.display_name + " >님이 \"" + sayMessage + "\"```", tts=False)
-				await PlaySound(voice_client1, './sound/say.wav')
+				await PlaySound(voice_client1, './sound/say.wav')'''
 
 			################ 보탐봇 재시작 ################ 
 
