@@ -2386,7 +2386,8 @@ while True:
 					colour=discord.Colour.green()
 				)
 				embed.set_image(url='./image/bossmap.png')
-				await msg.channel.send(embed=embed, tts=False)
+				##await msg.channel.send(embed=embed, tts=False)
+				await client.get_channel(channel).send( embed=embed, tts=False)
 				
 
 	client.loop.create_task(task())
