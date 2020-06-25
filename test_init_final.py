@@ -1520,7 +1520,7 @@ while True:
 				command_list += command[12] + ' [아이디]\n'     #!정산
 				command_list += command[13] + ' 또는 ' + command[14] + ' 0000, 00:00\n'     #!보스일괄
 				command_list += command[14] + '\n'     #!q
-				command_list += command[15] + ' [할말]\n'     #!v
+				##command_list += command[15] + ' [할말]\n'     #!v
 				command_list += command[16] + '\n'     #!리젠
 				command_list += command[17] + '\n'     #!현재시간
 				command_list += command[22] + '\n'     #!킬초기화
