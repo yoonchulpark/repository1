@@ -1533,6 +1533,7 @@ while True:
 				command_list += command[19] + ' [할말]\n\n'     #!상태
 				command_list += command[20] + '\n'     #보스탐
 				command_list += command[21] + '\n'     #!보스탐
+				command_list += command[25] + '\n'     #!보스맵
 				command_list += '[보스명]컷 또는 [보스명]컷 0000, 00:00\n'     
 				command_list += '[보스명]멍 또는 [보스명]멍 0000, 00:00\n'     
 				command_list += '[보스명]예상 또는 [보스명]예상 0000, 00:00\n' 
@@ -2378,6 +2379,15 @@ while True:
 						await client.get_channel(channel).send( '```킬 목록에 등록되어 있지 않습니다!\n```', tts=False)
 				else:
 					await client.get_channel(channel).send( '```제대로 된 아이디를 입력해주세요!\n```', tts=False)
+
+			################ 보스맵 ################ 		
+			if message.content == command[25]:
+				embed = discord.Embed(
+					colour=discord.Colour.green()
+				)
+				embed.set_image(url='./image/bossmap.png')
+				await msg.channel.send(embed=embed, tts=False)
+				
 
 	client.loop.create_task(task())
 	try:
