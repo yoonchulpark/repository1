@@ -2385,7 +2385,7 @@ while True:
 				embed = discord.Embed(
 					colour=discord.Colour.green()
 				)
-				embed.set_image(url='./image/bossmap.png')
+				embed.set_image(url='https://media.discordapp.net/attachments/724627799310336082/725526474014064711/unknown.png')
 				##await msg.channel.send(embed=embed, tts=False)
 				await client.get_channel(channel).send( embed=embed, tts=False)
 				
