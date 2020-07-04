@@ -2381,8 +2381,10 @@ while True:
 					await client.get_channel(channel).send( '```제대로 된 아이디를 입력해주세요!\n```', tts=False)
 
 			################ 보스맵 ################ 		
-			if message.content == command[25]:
+			##if message.content == command[25]:
+			if message.content.startswith('블랙릴리맵'):
 				embed = discord.Embed(
+					title = "----- 블랙릴리맵 -----",
 					colour=discord.Colour.green()
 				)
 				file = discord.File('./image/블랙릴리맵.jpg', filename="블랙릴리맵.jpg")
@@ -2390,6 +2392,19 @@ while True:
 				
 				##embed.set_image(url='https://media.discordapp.net/attachments/724627799310336082/725526474014064711/unknown.png')
 				embed.set_image(url="attachment://블랙릴리맵.jpg")
+				##await msg.channel.send(embed=embed, tts=False)
+				await client.get_channel(channel).send(file=file, embed=embed, tts=False)
+				
+			elif message.content.startswith('트롬바맵'):
+				embed = discord.Embed(
+					title = "----- 트롬바맵 -----",
+					colour=discord.Colour.green()
+				)
+				file = discord.File('./image/트롬바맵.jpg', filename="트롬바맵.jpg")
+				
+				
+				##embed.set_image(url='https://media.discordapp.net/attachments/724627799310336082/725526474014064711/unknown.png')
+				embed.set_image(url="attachment://트롬바맵.jpg")
 				##await msg.channel.send(embed=embed, tts=False)
 				await client.get_channel(channel).send(file=file, embed=embed, tts=False)
 				
