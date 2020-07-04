@@ -2385,9 +2385,13 @@ while True:
 				embed = discord.Embed(
 					colour=discord.Colour.green()
 				)
-				embed.set_image(url='https://media.discordapp.net/attachments/724627799310336082/725526474014064711/unknown.png')
+				file = discord.File('./image/블랙릴리맵.jpg', filename="블랙릴리맵.jpg")
+				
+				
+				##embed.set_image(url='https://media.discordapp.net/attachments/724627799310336082/725526474014064711/unknown.png')
+				embed.set_image(url="attachment://블랙릴리맵.jpg")
 				##await msg.channel.send(embed=embed, tts=False)
-				await client.get_channel(channel).send( embed=embed, tts=False)
+				await client.get_channel(channel).send(file=file, embed=embed, tts=False)
 				
 
 	client.loop.create_task(task())
