@@ -2400,7 +2400,7 @@ while True:
 	client.loop.create_task(task())
 	try:
 		print("start >> " + access_token)
-		client.start(access_token)
+		client.loop.run_until_complete(client.start(access_token))
 		print("complete >> ")
 	except SystemExit:
 		handle_exit()
