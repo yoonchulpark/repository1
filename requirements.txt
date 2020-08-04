@@ -1,6 +1,7 @@
 discord
 discord.py
 discord.py[voice]
+PyNaCl
 gtts
 PyGithub
 pyssml
