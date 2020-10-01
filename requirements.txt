@@ -1,10 +1,10 @@
+websockets==6.0
 discord
-discord.py
 discord.py[voice]
-PyNaCl
 gtts
 PyGithub
 pyssml
 gspread
 oauth2client
 PyOpenSSL
+boto3
