@@ -3477,14 +3477,15 @@ class IlsangDistributionBot(commands.AutoShardedBot):
 						await self.get_channel(channel).send('< ' + bossData[i][0] + ' 메모삭제 완료>', tts=False)
 
                     if message.content.startswith(bossData[i][0] +'정보'):
-                        bossname = message.content[5:]
+
+                        bossname = bossData[i][0]
                         embed = discord.Embed(
                             title = "----- "+bossname+" 맵 정보-----",
                         	colour=discord.Colour.green()
                         )
                         file = discord.File('./image/'+bossname+'맵.jpg', filename= bossname+"맵.jpg")
                         embed.set_image(url="attachment://"+bossname+"맵.jpg")
-                        await client.get_channel(channel).send(embed=embed, file=file, tts=False)
+                        await self.get_channel(channel).send(embed=embed, file=file, tts=False)
 
 		await self.process_commands(ori_msg)
 
