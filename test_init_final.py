@@ -1229,7 +1229,7 @@ class mainCog(commands.Cog):
 			command_list += ','.join(command[10]) + '\n'     #!미예약
 			command_list += ','.join(command[11]) + ' [인원] [금액]\n'     #!분배
 			command_list += ','.join(command[12]) + ' [뽑을인원수] [아이디1] [아이디2]...\n'     #!사다리
-			command_list += ','.join(command[40]) + ' [아이템1] [아이템2] [아이템3]... / [아이디1] [아이디2]...\n'     #!추첨
+			command_list += ','.join(command[40]) + ' [아이디1] [아이디2] [아이디3] [아이디4]... / [아이템1] [아이템2]...\n'     #!추첨
 			command_list += ','.join(command[27]) + ' [아이디1] [아이디2]...(최대 12명)\n'     #!경주
 			command_list += ','.join(command[35]) + ' [판매금액] (거래소세금)\n'     #!수수료
 			command_list += ','.join(command[36]) + ' [거래소금액] [실거래금액] (거래소세금)\n'     #!페이백
