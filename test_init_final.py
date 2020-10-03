@@ -1229,6 +1229,7 @@ class mainCog(commands.Cog):
 			command_list += ','.join(command[10]) + '\n'     #!미예약
 			command_list += ','.join(command[11]) + ' [인원] [금액]\n'     #!분배
 			command_list += ','.join(command[12]) + ' [뽑을인원수] [아이디1] [아이디2]...\n'     #!사다리
+			command_list += ','.join(command[40]) + ' [아이템1] [아이템2] [아이템3]... / [아이디1] [아이디2]...\n'     #!추첨
 			command_list += ','.join(command[27]) + ' [아이디1] [아이디2]...(최대 12명)\n'     #!경주
 			command_list += ','.join(command[35]) + ' [판매금액] (거래소세금)\n'     #!수수료
 			command_list += ','.join(command[36]) + ' [거래소금액] [실거래금액] (거래소세금)\n'     #!페이백
@@ -1262,6 +1263,7 @@ class mainCog(commands.Cog):
 			command_list += '[보스명]예상 또는 [보스명]예상 0000, 00:00\n' 
 			command_list += '[보스명]삭제\n'     
 			command_list += '[보스명]메모 [할말]\n'
+			command_list += '[보스명]정보 또는 [보스명] 정보\n'
 			embed = discord.Embed(
 					title = "----- 명령어 -----",
 					description= '```' + command_list + '```',
@@ -3089,6 +3091,36 @@ class mainCog(commands.Cog):
 
 		return await ctx.send(f"```보이스를 사용하지 않도록 설정하였습니다.!```")
 
+	################ 추첨 결과 출력 ################ 
+	@commands.command(name=command[40][0], aliases=command[40][1:])
+	async def select_(self, ctx : commands.Context, *, args : str = None):
+		if ctx.message.channel.id == basicSetting[7] or ctx.message.channel.id == basicSetting[8]:
+
+			if not args:
+				return await ctx.send(f'```명령어 [아이디1] [아이디2] [아이디3] / [아이템1] [아이템2]... 형태로 입력해주시기 바랍나다.```')
+
+			tempArr = args.strip().split('/')
+
+			if len(tempArr) != 2:
+				return await ctx.send(f'```명령어 [아이디1] [아이디2] [아이디3] / [아이템1] [아이템2]... 형태로 입력해주시기 바랍나다.```')
+
+			members = tempArr[0].strip().split(' ')
+			items = tempArr[1].strip().split(' ')
+
+			if len(items) > len(members):
+				return await ctx.send(f'```아이템 수가 인원보다 많습니다.```')
+
+			randoms = random.sample(members, len(items))
+
+			embed = discord.Embed(title = "추첨 결과", color=0x00ff00)
+			for n, item in enumerate(items):
+				embed.add_field(name = item, value = randoms[n]
+    
+			return await ctx.send(embed = embed)
+		else:
+			return					
+					
+					
 	################ ?????????????? ################ 
 	@commands.command(name='!오빠')
 	async def brother1_(self, ctx):
@@ -3476,7 +3508,9 @@ class IlsangDistributionBot(commands.AutoShardedBot):
 						bossData[i][6] = ''
 						await self.get_channel(channel).send('< ' + bossData[i][0] + ' 메모삭제 완료>', tts=False)
 
-					if message.content.startswith(bossData[i][0] +'정보'):
+					################ 보스 정보 ################ 
+					
+					if message.content.startswith(bossData[i][0] +'정보') or message.content.startswith(bossData[i][0] +' 정보'):
 						bossname = bossData[i][0]
 						embed = discord.Embed(
 							title = "----- "+bossname+" 맵 정보-----",
