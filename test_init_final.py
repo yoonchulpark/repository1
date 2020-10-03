@@ -3114,7 +3114,7 @@ class mainCog(commands.Cog):
 
 			embed = discord.Embed(title = "추첨 결과", color=0x00ff00)
 			for n, item in enumerate(items):
-				embed.add_field(name = item, value = randoms[n])
+				embed.add_field(name = item, value = randoms[n], inline=False)
 
 			return await ctx.send(embed=embed, tts=False)
 		else:
