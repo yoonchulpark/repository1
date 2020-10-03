@@ -3116,7 +3116,7 @@ class mainCog(commands.Cog):
 			for n, item in enumerate(items):
 				embed.add_field(name = item, value = randoms[n]
 
-			return await ctx.send(embed = embed)
+			await ctx.send(embed=embed, tts=False)
 		else:
 			return		
 					
