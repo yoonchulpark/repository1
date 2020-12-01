@@ -905,6 +905,7 @@ class taskCog(commands.Cog):
 
 				################ 고정 보스 확인 ################ 
 				for i in range(fixed_bossNum):
+					print ("고정보스확인")
 					print (fixed_bossData[i])
 					print (fixed_bossData[i][10])
 			
