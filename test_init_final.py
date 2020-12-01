@@ -905,15 +905,14 @@ class taskCog(commands.Cog):
 					await init_data_list('kill_list.ini', '-----척살명단-----')
 
 				################ 고정 보스 확인 ################ 
+				today_week = '월화수목금토일'[datetime.datetime.today().weekday()]
+				print("오늘")
+				print(today_week)
+
 				for i in range(fixed_bossNum):
-					print ("고정보스확인")
-					print (fixed_bossData[i])
-					print (fixed_bossData[i][10])
-			
 					################ 요일확인 ################
 					if fixed_bossData[i][10] != "everyday":
 						gen_weeks = fixed_bossData[i][10].split(',')
-						today_week = '월화수목금토일'[datetime.datetime.today().weekday()]						
 						if today_week not in gen_weeks:
 							continue
 
