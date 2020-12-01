@@ -65,6 +65,9 @@ channel_type = []
 FixedBossDateData = []
 indexFixedBossname = []
 
+gen_weeks = []
+today_week = ""
+
 access_token = os.environ["BOT_TOKEN"]			
 git_access_token = os.environ["GIT_TOKEN"]			
 git_access_repo = os.environ["GIT_REPO"]			
@@ -902,6 +905,13 @@ class taskCog(commands.Cog):
 
 				################ 고정 보스 확인 ################ 
 				for i in range(fixed_bossNum):
+					################ 요일확인 ################
+					if fixed_bossData[i][10] != 'everyday':
+						gen_weeks = fixed_bossData[i][10].split(',')
+						today_week = '월화수목금토일'[datetime.datetime.today().weekday()]						
+						if today_week not in gen_weeks:
+							continue
+
 					################ before_alert1 ################ 
 					if fixed_bossTime[i] <= priv0 and fixed_bossTime[i] > priv:
 						if basicSetting[3] != '0':
@@ -1901,6 +1911,10 @@ class mainCog(commands.Cog):
 					datelist2.append(bossTime[i])
 
 			for i in range(fixed_bossNum):
+				gen_weeks = fixed_bossData[i][10].split(',')
+				today_week = '월화수목금토일'[datetime.datetime.today().weekday()]						
+				if today_week not in gen_weeks:
+					continue
 				if fixed_bossTime[i] < datetime.datetime.now() + datetime.timedelta(hours=int(basicSetting[0])+3):
 					datelist2.append(fixed_bossTime[i])
 
@@ -1915,6 +1929,10 @@ class mainCog(commands.Cog):
 				aa = []
 
 			for i in range(fixed_bossNum):
+				gen_weeks = fixed_bossData[i][10].split(',')
+				today_week = '월화수목금토일'[datetime.datetime.today().weekday()]						
+				if today_week not in gen_weeks:
+					continue
 				aa.append(fixed_bossData[i][0])                      #output_bossData[0] : 보스명
 				aa.append(fixed_bossTime[i])                         #output_bossData[1] : 시간
 				aa.append(fixed_bossTime[i].strftime('%H:%M:%S'))    #output_bossData[2] : 시간(00:00:00)
