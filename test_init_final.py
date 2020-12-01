@@ -906,7 +906,8 @@ class taskCog(commands.Cog):
 				################ 고정 보스 확인 ################ 
 				for i in range(fixed_bossNum):
 					################ 요일확인 ################
-					if fixed_bossData[i][10] != 'everyday':
+					print("요일 확인 >>>" + fixed_bossData[i][10])
+					if fixed_bossData[i][10] != "everyday":
 						gen_weeks = fixed_bossData[i][10].split(',')
 						today_week = '월화수목금토일'[datetime.datetime.today().weekday()]						
 						if today_week not in gen_weeks:
@@ -1911,10 +1912,11 @@ class mainCog(commands.Cog):
 					datelist2.append(bossTime[i])
 
 			for i in range(fixed_bossNum):
-				gen_weeks = fixed_bossData[i][10].split(',')
-				today_week = '월화수목금토일'[datetime.datetime.today().weekday()]						
-				if today_week not in gen_weeks:
-					continue
+				if fixed_bossData[i][10] != "everyday":					
+					gen_weeks = fixed_bossData[i][10].split(',')
+					today_week = '월화수목금토일'[datetime.datetime.today().weekday()]						
+					if today_week not in gen_weeks:
+						continue
 				if fixed_bossTime[i] < datetime.datetime.now() + datetime.timedelta(hours=int(basicSetting[0])+3):
 					datelist2.append(fixed_bossTime[i])
 
@@ -1929,6 +1931,11 @@ class mainCog(commands.Cog):
 				aa = []
 
 			for i in range(fixed_bossNum):
+				if fixed_bossData[i][10] != "everyday":
+					gen_weeks = fixed_bossData[i][10].split(',')
+					today_week = '월화수목금토일'[datetime.datetime.today().weekday()]						
+					if today_week not in gen_weeks:
+						continue
 				gen_weeks = fixed_bossData[i][10].split(',')
 				today_week = '월화수목금토일'[datetime.datetime.today().weekday()]						
 				if today_week not in gen_weeks:
