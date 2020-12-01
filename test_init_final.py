@@ -906,9 +906,6 @@ class taskCog(commands.Cog):
 
 				################ 고정 보스 확인 ################ 
 				today_week = '월화수목금토일'[datetime.datetime.today().weekday()]
-				print("오늘")
-				print(today_week)
-
 				for i in range(fixed_bossNum):
 					################ 요일확인 ################
 					if fixed_bossData[i][10] != "everyday":
