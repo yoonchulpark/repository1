@@ -382,6 +382,7 @@ def init():
 			fb.append(tmp_fixed_bossData[j][3][12:16])                #fixed_bossData[7] : 시작일-년	
 			fb.append(tmp_fixed_bossData[j][3][17:19])                #fixed_bossData[8] : 시작일-월
 			fb.append(tmp_fixed_bossData[j][3][20:22])                #fixed_bossData[9] : 시작일-일
+			fb.append(tmp_fixed_bossData[j][6][11:])                  #fixed_bossData[10] : 젠주기 - 요일
 			fixed_bossData.append(fb)
 			fb = []
 			fixed_bossFlag.append(False)
