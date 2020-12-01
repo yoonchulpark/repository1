@@ -905,6 +905,9 @@ class taskCog(commands.Cog):
 
 				################ 고정 보스 확인 ################ 
 				for i in range(fixed_bossNum):
+					print (fixed_bossData[i])
+					print (fixed_bossData[i][10])
+			
 					################ 요일확인 ################
 					if fixed_bossData[i][10] != "everyday":
 						gen_weeks = fixed_bossData[i][10].split(',')
