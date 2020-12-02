@@ -2088,7 +2088,13 @@ class mainCog(commands.Cog):
 				else :
 					datelist2.append(bossTime[i])
 
+			today_week = '월화수목금토일'[datetime.datetime.today().weekday()]
 			for i in range(fixed_bossNum):
+				################ 요일확인 ################
+				if fixed_bossData[i][10] != "everyday":
+					if today_week not in fixed_bossData[i][10].split(','):
+						continue
+					
 				if fixed_bossTime[i] < datetime.datetime.now() + datetime.timedelta(hours=int(basicSetting[0])+3):
 					datelist2.append(fixed_bossTime[i])
 
