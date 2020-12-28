@@ -629,6 +629,9 @@ async def FixedBossDateSave():
 	global FixedBossDateData
 	global indexFixedBossname
 
+	print ('고정보스 날짜저장')
+	print ('\n'.join(fixed_bossNum))
+	
 	for i in range(fixed_bossNum):
 		FixedBossDateData[indexFixedBossname[i] + 3] = 'startDate = '+ fixed_bossTime[i].strftime('%Y-%m-%d') + '\n'
 
