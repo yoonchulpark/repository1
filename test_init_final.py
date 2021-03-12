@@ -3179,9 +3179,9 @@ class mainCog(commands.Cog):
 		return await PlaySound(ctx.voice_client, './sound/TJ' + str(resultTJ) +'.mp3')
 
 class IlsangDistributionBot(commands.AutoShardedBot):
-	def __init__(self):
+	async def __init__(self):
 		super().__init__(command_prefix=[""], help_command=None)
-		self.session = aiohttp.ClientSession(loop=self.loop)
+		self.session = await aiohttp.ClientSession(loop=self.loop)
 
 	def run(self):
 		super().run(access_token, reconnect=True)
