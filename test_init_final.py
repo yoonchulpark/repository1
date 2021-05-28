@@ -3162,7 +3162,7 @@ class mainCog(commands.Cog):
 			file = discord.File('./image/alchemy.jpg', filename= "alchemy.jpg")
 			embed.set_image(url="attachment://alchemy.jpg")
 			
-			return await ctx.send(embed=embed, tts=False)
+			return await ctx.send(embed=embed, file=file, tts=False)
 		else:
 			return
 					
