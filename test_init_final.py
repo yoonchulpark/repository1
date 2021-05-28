@@ -3157,7 +3157,7 @@ class mainCog(commands.Cog):
 	async def alchemy_(self, ctx : commands.Context, *, args : str = None):
 		if ctx.message.channel.id == basicSetting[7] or ctx.message.channel.id == basicSetting[8]:
 			
-			embed = discord.Embed(title = "연금술 정보", , color=0x00ff00)
+			embed = discord.Embed(title = "연금술 정보", color=0x00ff00)
 			
 			file = discord.File('./image/alchemy.jpg', filename= "alchemy.jpg")
 			embed.set_image(url="attachment://alchemy.jpg")
