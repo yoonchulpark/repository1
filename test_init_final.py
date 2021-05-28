@@ -3550,16 +3550,6 @@ class IlsangDistributionBot(commands.AutoShardedBot):
 						file = discord.File('./image/'+bossname+'맵.jpg', filename= bossname+"맵.jpg")
 						embed.set_image(url="attachment://"+bossname+"맵.jpg")
 						await self.get_channel(channel).send(embed=embed, file=file, tts=False)
-						
-					if message.content.startswith('연금술정보') or message.content.startswith('연금술 정보') or message.content.startswith('연금정보') or message.content.startswith('연금 정보'):
-						bossname = bossData[i][0]
-						embed = discord.Embed(
-							title = "----- 연금술 정보-----",
-							colour=discord.Colour.green()
-						)
-						file = discord.File('./image/alchemy.jpg', filename= "alchemy.jpg")
-						embed.set_image(url="attachment://alchemy.jpg")
-						await self.get_channel(channel).send(embed=embed, file=file, tts=False)
 
 		await self.process_commands(ori_msg)
 
