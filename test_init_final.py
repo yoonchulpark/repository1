@@ -3157,10 +3157,8 @@ class mainCog(commands.Cog):
 	async def alchemy_(self, ctx : commands.Context, *, args : str = None):
 		if ctx.message.channel.id == basicSetting[7] or ctx.message.channel.id == basicSetting[8]:
 			
-			embed = discord.Embed(
-				title = "----- 연금술 정보-----",
-				colour=discord.Colour.green()
-			)
+			embed = discord.Embed(title = "연금술 정보", , color=0x00ff00)
+			
 			file = discord.File('./image/alchemy.jpg', filename= "alchemy.jpg")
 			embed.set_image(url="attachment://alchemy.jpg")
 			
@@ -3169,30 +3167,30 @@ class mainCog(commands.Cog):
 			return
 					
 	################ ?????????????? ################ 
-	@commands.command(name='!오빠')
-	async def brother1_(self, ctx):
-		if basicSetting[21] != "1":
-			return await ctx.send('```보이스를 사용하지 않도록 설정되어 있습니다.```', tts=False)
-		return await PlaySound(ctx.voice_client, './sound/오빠.mp3')
+	##@commands.command(name='!오빠')
+	##async def brother1_(self, ctx):
+	##	if basicSetting[21] != "1":
+	##		return await ctx.send('```보이스를 사용하지 않도록 설정되어 있습니다.```', tts=False)
+	##	return await PlaySound(ctx.voice_client, './sound/오빠.mp3')
 
-	@commands.command(name='!언니')
-	async def sister_(self, ctx):
-		if basicSetting[21] != "1":
-			return await ctx.send('```보이스를 사용하지 않도록 설정되어 있습니다.```', tts=False)
-		return await PlaySound(ctx.voice_client, './sound/언니.mp3')
+	##@commands.command(name='!언니')
+	##async def sister_(self, ctx):
+	##	if basicSetting[21] != "1":
+	##		return await ctx.send('```보이스를 사용하지 않도록 설정되어 있습니다.```', tts=False)
+	##	return await PlaySound(ctx.voice_client, './sound/언니.mp3')
 
-	@commands.command(name='!형')
-	async def brother2_(self, ctx):
-		if basicSetting[21] != "1":
-			return await ctx.send('```보이스를 사용하지 않도록 설정되어 있습니다.```', tts=False)
-		return await PlaySound(ctx.voice_client, './sound/형.mp3')
+	##@commands.command(name='!형')
+	##async def brother2_(self, ctx):
+	##	if basicSetting[21] != "1":
+	##		return await ctx.send('```보이스를 사용하지 않도록 설정되어 있습니다.```', tts=False)
+	##	return await PlaySound(ctx.voice_client, './sound/형.mp3')
 	
-	@commands.command(name='!TJ', aliases=['!tj'])
-	async def TJ_(self, ctx):
-		if basicSetting[21] != "1":
-			return await ctx.send('```보이스를 사용하지 않도록 설정되어 있습니다.```', tts=False)
-		resultTJ = random.randrange(1,9)
-		return await PlaySound(ctx.voice_client, './sound/TJ' + str(resultTJ) +'.mp3')
+	##@commands.command(name='!TJ', aliases=['!tj'])
+	##async def TJ_(self, ctx):
+	##	if basicSetting[21] != "1":
+	##		return await ctx.send('```보이스를 사용하지 않도록 설정되어 있습니다.```', tts=False)
+	##	resultTJ = random.randrange(1,9)
+	##	return await PlaySound(ctx.voice_client, './sound/TJ' + str(resultTJ) +'.mp3')
 
 class IlsangDistributionBot(commands.AutoShardedBot):
 	def __init__(self):
