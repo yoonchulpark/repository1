@@ -3150,7 +3150,22 @@ class mainCog(commands.Cog):
 			return await ctx.send(embed=embed, tts=False)
 		else:
 			return		
-					
+	
+	################ 연금술정보 출력 ################ 
+	@commands.command(name=command[41][0], aliases=command[41][1:])
+	async def alchemy_(self, ctx : commands.Context, *, args : str = None):
+		if ctx.message.channel.id == basicSetting[7] or ctx.message.channel.id == basicSetting[8]:
+			
+			embed = discord.Embed(
+				title = "----- 연금술 정보-----",
+				colour=discord.Colour.green()
+			)
+			file = discord.File('./image/alchemy.jpg', filename= "alchemy.jpg")
+			embed.set_image(url="attachment://alchemy.jpg")
+			
+			return await ctx.send(embed=embed, tts=False)
+		else:
+			return
 					
 	################ ?????????????? ################ 
 	@commands.command(name='!오빠')
